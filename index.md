@@ -1,3 +1,6 @@
+---
+title: Fakeprovide
+---
 Fakeprovide
 ===========
 
