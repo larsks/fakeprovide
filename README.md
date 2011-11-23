@@ -1,4 +1,3 @@
-===========
 Fakeprovide
 ===========
 
@@ -7,26 +6,26 @@ package that provides the named dependency of your choice.  You can use
 this if you are working with a package from a third party that for some
 reason has non-critical unsatisfied dependencies.
 
-For example, sometimes vendors goof::
+For example, sometimes vendors goof:
 
-  $ sudo yum install google-talkplugin_current_x86_64.rpm
-  Loaded plugins: langpacks, presto, refresh-packagekit
-  Setting up Install Process
-  Resolving Dependencies
-  --> Running transaction check
-  ---> Package google-talkplugin.x86_64 0:2.5.6.0-1 will be installed
-  --> Processing Dependency: libnpgtpo3dautoplugin.so for package: google-talkplugin-2.5.6.0-1.x86_64
-  --> Finished Dependency Resolution
-  Error: Package: google-talkplugin-2.5.6.0-1.x86_64 (google-talkplugin)
-             Requires: libnpgtpo3dautoplugin.so
-   You could try using --skip-broken to work around the problem
-   You could try running: rpm -Va --nofiles --nodigest
+    $ sudo yum install google-talkplugin_current_x86_64.rpm
+    Loaded plugins: langpacks, presto, refresh-packagekit
+    Setting up Install Process
+    Resolving Dependencies
+    --> Running transaction check
+    ---> Package google-talkplugin.x86_64 0:2.5.6.0-1 will be installed
+    --> Processing Dependency: libnpgtpo3dautoplugin.so for package: google-talkplugin-2.5.6.0-1.x86_64
+    --> Finished Dependency Resolution
+    Error: Package: google-talkplugin-2.5.6.0-1.x86_64 (google-talkplugin)
+               Requires: libnpgtpo3dautoplugin.so
+     You could try using --skip-broken to work around the problem
+     You could try running: rpm -Va --nofiles --nodigest
 
 Using fakeprovide, you can simply do this::
 
-  $ fakeprovide libnpgtpo3dautoplugin.so
-  $ sudo yum install google-talkplugin_current_x86_64.rpm \
-    fakeprovide-libnpgtpo3dautoplugin.so-20111122163010-1.fc16.noarch.rpm
+    $ fakeprovide libnpgtpo3dautoplugin.so
+    $ sudo yum install google-talkplugin_current_x86_64.rpm \
+      fakeprovide-libnpgtpo3dautoplugin.so-20111122163010-1.fc16.noarch.rpm
 
 This is better than simply running `rpm --nodeps ...` because you are left
 with a valid dependency tree, and `yum` has actually started to maintain some
