@@ -6,6 +6,11 @@ Fakeprovide
 
 *Fakeprovide* is a tool for satisfying RPM dependencies.
 
+Documentation
+=============
+
+The [README](README.html) is available [here](README.html).
+
 Downloads
 =========
 
