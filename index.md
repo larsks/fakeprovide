@@ -14,5 +14,6 @@ The [README](README.html) is available [here](README.html).
 Downloads
 =========
 
-You can grab the source from http://github.com/larsks/fakeprovide.
+You can grab the source from
+[http://github.com/larsks/fakeprovide/](http://github.com/larsks/fakeprovide).
 
