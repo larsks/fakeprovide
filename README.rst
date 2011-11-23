@@ -29,8 +29,18 @@ Using fakeprovide, you can simply do this::
     fakeprovide-libnpgtpo3dautoplugin.so-20111122163010-1.fc16.noarch.rpm
 
 This is better than simply running `rpm --nodeps ...` because you are left
-with a valid depdency tree, and `yum` has actually started to maintain some
+with a valid dependency tree, and `yum` has actually started to maintain some
 metadata outside of rpm (so running `rpm` directory is discouraged).
+
+Options
+=======
+
+The `fakeprovide` script supports the following options:
+
+- `-a` *arch* -- set the build architecture (normally *noarch*).
+- `-s` *summary* -- set the package summary and description.
+- `-B` -- DO NOT build the binary rpm.
+- `-S` -- DO build the source rpm.
 
 Author
 ======
