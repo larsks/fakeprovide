@@ -68,7 +68,7 @@ BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Source:		README
 Provides:	$provide
 
-BuildArch:	$RPM_BUILDARCH
+BuildArch:	\$RPM_BUILDARCH
 
 %description
 %{summary}
@@ -81,11 +81,11 @@ cp %{SOURCE0} .
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf \$RPM_BUILD_ROOT
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf \$RPM_BUILD_ROOT
 
 
 %files
