@@ -92,8 +92,6 @@ cp %{SOURCE0} .
 
 EOF
 
-cp $tmpdir/fakeprovide.spec ~/tmp/fp.spec
-
 # We want to avoid problems caused by a local .rpmmacros file, so
 # we point HOME to our temporary directory.
 export HOME=$tmpdir
