@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # This script will generate an RPM that "provides" a named dependency.
 
@@ -6,6 +6,7 @@ RPM_BUILDARCH=noarch
 RPM_SUMMARY=
 RPM_BUILD_SOURCE=0
 RPM_BUILD_BINARY=1
+RPM_ADDL_PROVIDES=()
 
 # Exit with an error message.
 die () {
@@ -19,12 +20,13 @@ usage () {
 	echo "$0: usage: $0 [ -a arch ] [ -s summary ] [ -BS ] name"
 }
 
-while getopts 'a:s:hSB' ch; do
+while getopts 'a:s:hSBP:' ch; do
 	case $ch in
 		(a)	RPM_BUILDARCH="$OPTARG";;
 		(s)	RPM_SUMMARY="$OPTARG";;
 		(S)	RPM_BUILD_SOURCE=1;;
 		(B)	RPM_BUILD_BINARY=0;;
+		(P)	RPM_ADDL_PROVIDES+=($OPTARG);;
 		(h)	usage
 			exit 0
 			;;
@@ -67,6 +69,10 @@ BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 Source:		README
 Provides:	$provide
+
+$(for p in "${RPM_ADDL_PROVIDES[@]}"; do
+echo "Provides: $p"
+done)
 
 BuildArch:	$RPM_BUILDARCH
 
