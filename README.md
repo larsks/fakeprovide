@@ -40,6 +40,7 @@ The `fakeprovide` script supports the following options:
 - `-s` *summary* -- set the package summary and description.
 - `-B` -- DO NOT build the binary rpm.
 - `-S` -- DO build the source rpm.
+- `-P` -- Specify extra provides
 
 Author
 ======
