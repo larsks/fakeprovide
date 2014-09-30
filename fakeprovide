@@ -40,7 +40,7 @@ shift $(( $OPTIND - 1 ))
 
 # Put everything in a temporary directory 
 # (and clean it up when we're done).
-tmpdir=$(mktemp -d --tmpdir rpmspecXXXXXX)
+tmpdir=$(mktemp -d -t rpmspecXXXXXX)
 trap "rm -rf $tmpdir" EXIT INT QUIT TERM HUP
 
 provide=$1
