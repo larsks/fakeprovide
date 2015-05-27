@@ -103,13 +103,13 @@ EOF
 export HOME=$tmpdir
 
 if [ "$RPM_BUILD_SOURCE" = 1 ]; then
-	echo "Building source RPM (SRPM)."
+	echo "Building source RPM (SRPM)." >&2
 	rpmbuild -bs $tmpdir/fakeprovide.spec > $tmpdir/srpm.log 2>&1 ||
 		die "Failed to build source RPM." $tmpdir/srpm.log
 fi
 
 if [ "$RPM_BUILD_BINARY" = 1 ]; then
-	echo "Building binary RPM."
+	echo "Building binary RPM." >&2
 	if [ "$RPM_BUILDARCH" = noarch ]; then
 		rpmbuild -bb $tmpdir/fakeprovide.spec > $tmpdir/rpm.log 2>&1 ||
 			die "Failed to build binary RPM." $tmpdir/rpm.log
@@ -123,7 +123,7 @@ for rpm in $tmpdir/rpmbuild/RPMS/*/*.rpm $tmpdir/rpmbuild/SRPMS/*.rpm; do
 	[ -f "$rpm" ] || continue
 
 	cp "$rpm" .
-	ls -l "$(basename $rpm)"
+	ls "$(basename $rpm)"
 done
 
 
