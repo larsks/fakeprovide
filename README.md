@@ -29,7 +29,7 @@ Using fakeprovide, you can simply do this::
 
 This is better than simply running `rpm --nodeps ...` because you are left
 with a valid dependency tree, and `yum` has actually started to maintain some
-metadata outside of rpm (so running `rpm` directory is discouraged).
+metadata outside of rpm (so running `rpm` directly is discouraged).
 
 Options
 =======
