@@ -20,13 +20,14 @@ usage () {
 	echo "$0: usage: $0 [ -a arch ] [ -s summary ] [-P extra provides] [ -BS ] name"
 }
 
-while getopts 'a:s:hSBP:' ch; do
+while getopts 'a:s:hSBP:v:' ch; do
 	case $ch in
 		(a)	RPM_BUILDARCH="$OPTARG";;
 		(s)	RPM_SUMMARY="$OPTARG";;
 		(S)	RPM_BUILD_SOURCE=1;;
 		(B)	RPM_BUILD_BINARY=0;;
 		(P)	RPM_ADDL_PROVIDES+=($OPTARG);;
+		(v)	RPM_VERSION="$OPTARG";;
 		(h)	usage
 			exit 0
 			;;
@@ -59,7 +60,7 @@ EOF
 # Create the RPM spec file.
 cat > $tmpdir/fakeprovide.spec <<EOF
 Name:		fakeprovide-$provide
-Version:	$(date "+%Y%m%d%H%M%S")
+Version:	${RPM_VERSION:-$(date "+%Y%m%d%H%M%S")}
 Release:	1%{?dist}
 Summary:	${RPM_SUMMARY:-Fake provide for $provide.}
 
