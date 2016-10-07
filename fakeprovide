@@ -105,17 +105,17 @@ export HOME=$tmpdir
 
 if [ "$RPM_BUILD_SOURCE" = 1 ]; then
 	echo "Building source RPM (SRPM)." >&2
-	rpmbuild -bs $tmpdir/fakeprovide.spec > $tmpdir/srpm.log 2>&1 ||
+	rpmbuild -bs --define "_topdir $tmpdir/rpmbuild" $tmpdir/fakeprovide.spec > $tmpdir/srpm.log 2>&1 ||
 		die "Failed to build source RPM." $tmpdir/srpm.log
 fi
 
 if [ "$RPM_BUILD_BINARY" = 1 ]; then
 	echo "Building binary RPM." >&2
 	if [ "$RPM_BUILDARCH" = noarch ]; then
-		rpmbuild -bb $tmpdir/fakeprovide.spec > $tmpdir/rpm.log 2>&1 ||
+		rpmbuild -bb --define "_topdir $tmpdir/rpmbuild" $tmpdir/fakeprovide.spec > $tmpdir/rpm.log 2>&1 ||
 			die "Failed to build binary RPM." $tmpdir/rpm.log
 	else
-		setarch $RPM_BUILDARCH rpmbuild -bb $tmpdir/fakeprovide.spec > $tmpdir/rpm.log 2>&1 ||
+		setarch $RPM_BUILDARCH rpmbuild -bb --define "_topdir $tmpdir/rpmbuild" $tmpdir/fakeprovide.spec > $tmpdir/rpm.log 2>&1 ||
 			die "Failed to build binary RPM." $tmpdir/rpm.log
 	fi
 fi
