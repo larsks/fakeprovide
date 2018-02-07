@@ -38,6 +38,7 @@ The `fakeprovide` script supports the following options:
 
 - `-a` *arch* -- set the build architecture (normally *noarch*).
 - `-s` *summary* -- set the package summary and description.
+- `-v` *version* -- set the package version.
 - `-B` -- DO NOT build the binary rpm.
 - `-S` -- DO build the source rpm.
 - `-P` -- Specify extra provides
