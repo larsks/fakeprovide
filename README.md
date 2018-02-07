@@ -43,6 +43,18 @@ The `fakeprovide` script supports the following options:
 - `-S` -- DO build the source rpm.
 - `-P` -- Specify extra provides
 
+Installation
+============
+
+Installation is very simple:
+
+    $ sudo make install
+
+By default, `fakeprovide` is installed in `/usr/bin`.  To override the
+default installation prefix, do:
+
+    $ sudo make prefix=/usr/local install
+
 Author
 ======
 
