@@ -17,7 +17,7 @@ die () {
 
 # Show usage information.
 usage () {
-	echo "$0: usage: $0 [ -a arch ] [ -s summary ] [-P extra provides] [ -BS ] name"
+	echo "$0: usage: $0 [ -v version ] [ -a arch ] [ -s summary ] [-P extra provides] [ -BS ] name"
 }
 
 while getopts 'a:s:hSBP:v:' ch; do
