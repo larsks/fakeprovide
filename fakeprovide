@@ -26,7 +26,7 @@ while getopts 'a:s:hSBP:v:' ch; do
 		(s)	RPM_SUMMARY="$OPTARG";;
 		(S)	RPM_BUILD_SOURCE=1;;
 		(B)	RPM_BUILD_BINARY=0;;
-		(P)	RPM_ADDL_PROVIDES+=($OPTARG);;
+		(P)	RPM_ADDL_PROVIDES+=("$OPTARG");;
 		(v)	RPM_VERSION="$OPTARG";;
 		(h)	usage
 			exit 0
