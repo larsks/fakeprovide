@@ -79,6 +79,7 @@ BuildArch:	$RPM_BUILDARCH
 
 %description
 %{summary}
+%global debug_package %{nil}
 
 %prep
 %setup -c -T
@@ -115,7 +116,7 @@ if [ "$RPM_BUILD_BINARY" = 1 ]; then
 		rpmbuild -bb --define "_topdir $tmpdir/rpmbuild" $tmpdir/fakeprovide.spec > $tmpdir/rpm.log 2>&1 ||
 			die "Failed to build binary RPM." $tmpdir/rpm.log
 	else
-		setarch $RPM_BUILDARCH rpmbuild -bb --define "_topdir $tmpdir/rpmbuild" $tmpdir/fakeprovide.spec > $tmpdir/rpm.log 2>&1 ||
+		setarch $RPM_BUILDARCH rpmbuild --nodebuginfo -bb --define "_topdir $tmpdir/rpmbuild" $tmpdir/fakeprovide.spec > $tmpdir/rpm.log 2>&1 ||
 			die "Failed to build binary RPM." $tmpdir/rpm.log
 	fi
 fi
